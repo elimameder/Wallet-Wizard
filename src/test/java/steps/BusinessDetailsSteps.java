@@ -11,12 +11,12 @@ import utils.Driver;
 
 public class BusinessDetailsSteps extends BaseUI {
 
-    private final ProfileOverviewPage overviewPage = new ProfileOverviewPage();
     private final BusinessDetailsPage businessDetailsPage = new BusinessDetailsPage();
 
     @When("user clicks Business details in the sidebar")
     public void userClicksBusinessDetailsInTheSidebar() {
-        overviewPage.clickBusinessDetailsMenuItem();
+        waitAndClick(businessDetailsPage.pageHeading);
+        waitAndClick(businessDetailsPage.businessDetailsHeading);
         businessDetailsPage.verifyBusinessDetailsFormIsVisible();
     }
 

@@ -13,6 +13,7 @@ public class CardsPage {
         PageFactory.initElements(driver, this);
     }
 
+
     @FindBy(xpath = "//header[@class='bg-nav w-full']//a[text()='Cards']")
     public WebElement cardsLink;
 

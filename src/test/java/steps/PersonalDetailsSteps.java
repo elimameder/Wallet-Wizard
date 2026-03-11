@@ -11,12 +11,12 @@ import utils.Driver;
 
 public class PersonalDetailsSteps extends BaseUI {
 
-    private final ProfileOverviewPage overviewPage = new ProfileOverviewPage();
     private final PersonalDetailsPage personalDetailsPage = new PersonalDetailsPage();
 
     @When("user clicks Personal details in the sidebar")
     public void userClicksPersonalDetailsInTheSidebar() {
-        overviewPage.clickPersonalDetailsMenuItem();
+        waitAndClick(personalDetailsPage.pageHeading);
+        waitAndClick(personalDetailsPage.personalInformationHeading);
         personalDetailsPage.verifyPersonalInformationFormIsVisible();
     }
 

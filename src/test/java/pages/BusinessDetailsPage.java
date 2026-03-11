@@ -16,8 +16,10 @@ public class BusinessDetailsPage extends BaseUI {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy (xpath = "//header[@class='bg-nav w-full']//a[text()='Profile & settings']")
+    public WebElement pageHeading;
 
-    @FindBy(xpath = "//h2[contains(text(),'Business Details')] | //h3[contains(text(),'Business Details')]")
+    @FindBy(xpath = "//span[text()='Business details']/..")
     public WebElement businessDetailsHeading;
 
     @FindBy(xpath = "//input[@placeholder='Enter your business name'] | //input[@name='businessName']")

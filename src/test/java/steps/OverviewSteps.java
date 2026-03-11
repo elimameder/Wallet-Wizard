@@ -16,35 +16,7 @@ public class OverviewSteps extends BaseUI {
 
     @Given("user navigates to Profile and Settings overview")
     public void userNavigatesToProfileAndSettingsOverview() {
-        String currentUrl = Driver.getDriver().getCurrentUrl();
-
-        if (!currentUrl.contains("account") && !currentUrl.contains("my-wallet-wizard")) {
-            Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-            LoginPage loginPage = new LoginPage();
-            loginPage.loginAndStay();
-        }
-
-        // navigate to account page
-        String accountUrl = ConfigurationReader.getProperty("url")
-                .replace("/login", "/account");
-        Driver.getDriver().get(accountUrl);
-
-        explicitWait(10).until(driver ->
-                driver.getCurrentUrl().contains("account") ||
-                        driver.getCurrentUrl().contains("login")
-        );
-
-        if (Driver.getDriver().getCurrentUrl().contains("login")) {
-            LoginPage loginPage = new LoginPage();
-            loginPage.loginAndStay();
-            Driver.getDriver().get(accountUrl);
-            explicitWait(10).until(driver -> driver.getCurrentUrl().contains("account"));
-        }
-
-        Assertions.assertTrue(
-                Driver.getDriver().getCurrentUrl().contains("account"),
-                "URL should contain 'account'. Actual: " + Driver.getDriver().getCurrentUrl()
-        );
+        waitAndClick(overviewPage.pageHeading);
     }
 
     @Then("the page heading should display {string}")

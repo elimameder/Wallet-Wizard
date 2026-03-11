@@ -16,8 +16,10 @@ public class PersonalDetailsPage extends BaseUI {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy (xpath = "//header[@class='bg-nav w-full']//a[text()='Profile & settings']")
+    public WebElement pageHeading;
 
-    @FindBy(xpath = "//h2[contains(text(),'Personal Information')] | //h3[contains(text(),'Personal Information')]")
+    @FindBy(xpath = "//span[text()='Personal details']/..")
     public WebElement personalInformationHeading;
 
 

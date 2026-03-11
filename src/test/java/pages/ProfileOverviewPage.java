@@ -16,17 +16,14 @@ public class ProfileOverviewPage extends BaseUI {
         PageFactory.initElements(driver, this);
     }
 
-
-    @FindBy(xpath = "//h1[normalize-space()='Profile & Settings'] | //h2[normalize-space()='Profile & Settings']")
+    @FindBy (xpath = "//header[@class='bg-nav w-full']//a[text()='Profile & settings']")
     public WebElement pageHeading;
-
 
     @FindBy(xpath = "//button[normalize-space()='Personal details'] | //a[normalize-space()='Personal details']")
     public WebElement personalDetailsMenuItem;
 
     @FindBy(xpath = "//button[normalize-space()='Business details'] | //a[normalize-space()='Business details']")
     public WebElement businessDetailsMenuItem;
-
 
     @FindBy(xpath = "//*[normalize-space()='Personal details'][ancestor::*[contains(@class,'card')]] | //h3[normalize-space()='Personal details']")
     public WebElement personalDetailsCard;
@@ -45,7 +42,6 @@ public class ProfileOverviewPage extends BaseUI {
 
     @FindBy(xpath = "//*[normalize-space()='Payment preferences'][ancestor::*[contains(@class,'card')]] | //h3[normalize-space()='Payment preferences']")
     public WebElement paymentPreferencesCard;
-
 
     @FindBy(xpath = "(//a[normalize-space()='Update info'])[1]")
     public WebElement personalDetailsUpdateLink;
