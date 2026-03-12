@@ -15,8 +15,8 @@ public class Hooks {
         loginPage.loginAndStay();
     }
 
-    @After
-    public void quit(){
-        Driver.quitDriver();
+   // @After
+    //public void quit(){
+    //    Driver.quitDriver();
     }
-}
+//}
