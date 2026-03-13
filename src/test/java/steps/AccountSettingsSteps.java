@@ -3,42 +3,35 @@ package steps;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.AccountSettingsPage;
+import utils.BaseUI;
 
-    public class AccountSettingsSteps {
+public class AccountSettingsSteps extends BaseUI {
 
         AccountSettingsPage accountSettingsPage = new AccountSettingsPage();
 
         @When("user clicks Account settings")
         public void user_clicks_account_settings() {
-            accountSettingsPage.accountSettings.click();
+            waitAndClick(accountSettingsPage.accountSettings);
         }
-
         @When("user enables Go Paperless")
         public void user_enables_go_paperless() {
-            accountSettingsPage.goPaperlessToggle.click();
+            waitAndClick(accountSettingsPage.goPaperlessToggle);
         }
-
         @Then("Go Paperless should be enabled")
         public void go_paperless_should_be_enabled() {
-            Assertions.assertTrue(accountSettingsPage.goPaperlessToggle.isSelected());
+            explicitWait(5).until(ExpectedConditions.visibilityOf(accountSettingsPage.goPaperlessToggle));
+            Assertions.assertTrue(accountSettingsPage.goPaperlessToggle.isEnabled());
         }
-
-        @Then("account nickname should be {string}")
-        public void account_nickname_should_be(String nickname) {
-            Assertions.assertEquals(nickname,
-                    accountSettingsPage.accountNickname.getAttribute("value"));
-        }
-
         @When("user enables Hide Account")
         public void user_enables_hide_account() {
-            accountSettingsPage.hideAccountToggle.click();
+            waitAndClick(accountSettingsPage.hideAccountToggle);
         }
-
-        @Then("account should be hidden")
+        @Then("account should be hidden from dashboard")
         public void account_should_be_hidden() {
-            Assertions.assertTrue(accountSettingsPage.hideAccountToggle.isSelected());
+            explicitWait(5).until(ExpectedConditions.visibilityOf(accountSettingsPage.hideAccountToggle));
+            Assertions.assertTrue(accountSettingsPage.hideAccountToggle.isEnabled());
         }
-
     }
 

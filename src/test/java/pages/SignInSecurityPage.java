@@ -7,9 +7,6 @@ import utils.Driver;
 
 public class SignInSecurityPage {
 
-
-    public WebElement twoFactorToggle;
-
     public SignInSecurityPage(){
             PageFactory.initElements(Driver.getDriver(), this);
         }
@@ -17,11 +14,17 @@ public class SignInSecurityPage {
         @FindBy(xpath = "//a[text()='Profile & settings']")
         public WebElement profileSettings;
 
-        @FindBy(xpath = "//a[text()='Sign-in & security']")
+        @FindBy(xpath = "//span[text()='Sign-in & security']")
         public WebElement signInSecurity;
 
-        @FindBy(xpath = "//button[contains(text(),'Change Password')]")
+        @FindBy (xpath = "//p[contains(text(),'Two-Factor')]/../..//button")
+        public WebElement twoFactorToggle;
+
+        @FindBy(xpath = "//button[contains(text(),'Password')]")
         public WebElement changePassword;
+
+        @FindBy (xpath = "//div[text()='Password reset email sent!']")
+        public WebElement passwordResetMessage;
 
     }
 

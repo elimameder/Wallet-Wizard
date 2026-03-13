@@ -11,16 +11,16 @@ public class AccountSettingsPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath = "//span[contains(text(),'Account settings')]")
+    @FindBy(xpath = "//span[contains(text(),'Account settings')]/..")
     public WebElement accountSettings;
 
-    @FindBy(xpath = "//input[@type='checkbox'][1]")
+    @FindBy(xpath = "//p[text()='Go Paperless']/../..//button")
     public WebElement goPaperlessToggle;
 
     @FindBy(xpath = "//input[contains(@value,'My Account')]")
     public WebElement accountNickname;
 
-    @FindBy(xpath = "//input[@type='checkbox'][2]")
+    @FindBy(xpath = "//p[text()='Hide Account']/../..//button")
     public WebElement hideAccountToggle;
 
 }
