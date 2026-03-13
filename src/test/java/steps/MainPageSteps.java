@@ -3,6 +3,7 @@ package steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.LoginPage;
 import pages.MainPage;
 import utils.BaseUI;
@@ -12,14 +13,7 @@ import utils.Driver;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MainPageSteps extends BaseUI {
-    LoginPage loginPage = new LoginPage();
     MainPage mainPage = new MainPage();
-
-    @Given("user is logged in and on the main page")
-    public void user_is_logged_in_and_on_the_main_page() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-        loginPage.loginAndStay();
-    }
 
     @When("user clicks on the {string} section")
     public void user_clicks_on_the_section(String section) {

@@ -4,22 +4,16 @@ import io.cucumber.java.en.*;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
 import pages.AlertsPage;
-import pages.LoginPage;
 import pages.MainPage;
 import utils.BaseUI;
-import utils.ConfigurationReader;
-import utils.Driver;
+
 
 public class AlertsSteps extends BaseUI {
-
-    LoginPage loginPage = new LoginPage();
-    AlertsPage alertsPage =new AlertsPage();
+    AlertsPage alertsPage = new AlertsPage();
     MainPage mainPage = new MainPage();
 
     @Given("user is logged in and navigated to Profile & Settings Alerts section")
     public void user_is_logged_in_and_navigated_to_profile_settings_alerts_section() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-        loginPage.loginAndStay();
         waitAndClick(mainPage.profileAndSettingsSection);
         waitAndClick(alertsPage.alertsSection);
     }

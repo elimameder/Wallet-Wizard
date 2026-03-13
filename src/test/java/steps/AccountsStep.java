@@ -32,6 +32,7 @@ public class AccountsStep extends BaseUI {
 
     @Then("verify user can get statements&documents of chosen account")
     public void verify_user_can_get_statements_documents_of_chosen_account() {
+        explicitWait(5).until(ExpectedConditions.visibilityOf(accountsPage.creditAccount));
         waitAndClick(accountsPage.creditAccount);
         explicitWait(10).until(ExpectedConditions.visibilityOf(accountsPage.viewStatements));
         waitAndClick(accountsPage.viewStatements);

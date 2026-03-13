@@ -1,4 +1,4 @@
-@regression @loggedIn @alertsPage
+@regression @logIn @logOut @alertsPage
   Feature: profile & settings - alerts section
 
     Scenario Outline: user can select an unselected Alerts radio button

@@ -15,8 +15,17 @@ public class Hooks {
         loginPage.loginAndStay();
     }
 
-   // @After
-    //public void quit(){
-    //    Driver.quitDriver();
+    @Before ("@logIn")
+    public void logIn() {
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+        LoginPage loginPage = new LoginPage();
+        loginPage.loginAndStay();
     }
-//}
+
+    @After ("@logOut")
+    public void logOut() {
+        LoginPage loginPage = new LoginPage();
+        loginPage.logOut();
+        Driver.quitDriver();
+    }
+}

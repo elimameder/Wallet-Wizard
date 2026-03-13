@@ -53,7 +53,7 @@ public class PayAndTransferPage extends BaseUI {
     @FindBy(css = "input[type='number']")
     public WebElement totalAmount;
 
-    @FindBy(xpath = "//div[@id='radix-:rb:-content-send']//input[contains(@placeholder,'it for')]")
+    @FindBy(xpath = "//label[contains(text(),'Memo')]/..//input")
     public WebElement memoOptional;
 
     @FindBy(xpath = "//button[contains(text(),'Send via Zelle')]")
@@ -69,11 +69,14 @@ public class PayAndTransferPage extends BaseUI {
     @FindBy(xpath = "//p[normalize-space()='Fraud Warning']")
     public WebElement warningMessage;
 
-    @FindBy(xpath = "//*[contains(text(),'Please fill in all fields')]")
+    @FindBy(xpath = "(//*[contains(text(),'Please fill in all fields')])[1]")
     public WebElement fillInEmptyFields;
 
     @FindBy(xpath = "//h3[normalize-space()='Payment Sent!']")
     public WebElement paymentSent;
+
+    @FindBy (xpath = "//button[text()='Done']")
+    public WebElement doneButton;
 
     // =================== METHODS ===================
     public void verifyWarningMessageIsDisplay() {

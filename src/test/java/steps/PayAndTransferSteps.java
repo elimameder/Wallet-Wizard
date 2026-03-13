@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.PayAndTransferPage;
 import utils.BaseUI;
 
@@ -15,8 +16,10 @@ public class PayAndTransferSteps extends BaseUI {
     // =================== GIVEN ===================
     @Given("user is on Pay and Transfer page")
     public void user_is_on_pay_and_transfer_page() {
+        explicitWait(5).until(ExpectedConditions.visibilityOf(page.payAndTransfer));
         waitUntilVisible(20, page.payAndTransfer);
         page.payAndTransfer.click();
+
     }
 
     // =================== REQUEST MONEY STEPS ===================
@@ -52,6 +55,7 @@ public class PayAndTransferSteps extends BaseUI {
 
     @Then("user should see a requested message displayed")
     public void user_should_see_a_requested_message_displayed() {
+        explicitWait(5).until(ExpectedConditions.visibilityOf(page.requestedMessage));
         Assertions.assertTrue(page.isRequestedMessageDisplayed());
     }
 
@@ -63,9 +67,9 @@ public class PayAndTransferSteps extends BaseUI {
     }
 
     @When("user enters send recipient {string}")
-    public void user_enters_send_recipient(String recipient) {
-        waitUntilVisible(20, page.eAndPhone);
-        page.eAndPhone.sendKeys(recipient);
+    public void user_enters_send_recipient(String recipient){
+        waitUntilVisible(20, page.emailOrPhone);
+        page.emailOrPhone.sendKeys(recipient);
     }
 
     @When("user enters send amount {string}")
@@ -82,7 +86,7 @@ public class PayAndTransferSteps extends BaseUI {
 
     @When("user clicks on Send via Zelle button")
     public void user_clicks_on_send_via_zelle_button() {
-        waitUntilVisible(20, page.sendViaZelleBtn);
+        explicitWait(5).until(ExpectedConditions.visibilityOf(page.sendViaZelleBtn));
         page.sendViaZelleBtn.click();
     }
 
@@ -100,6 +104,8 @@ public class PayAndTransferSteps extends BaseUI {
     @Then("user should see Payment Sent message")
     public void user_should_see_payment_sent_message() {
         page.paymentSentMessage();
+        explicitWait(5).until(ExpectedConditions.visibilityOf(page.doneButton));
+        waitAndClick(page.doneButton);
     }
 
     // =================== SHARED STEPS ===================

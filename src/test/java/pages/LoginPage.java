@@ -24,7 +24,7 @@ public class LoginPage extends BaseUI {
     @FindBy(css = "button[type='submit']")
     public WebElement signInButton;
 
-    @FindBy(xpath = "//button[text()='Sign out']")
+    @FindBy(xpath = "//*[normalize-space()='Sign out']")
     public WebElement signOutButton;
 
     public void login() {
@@ -42,6 +42,11 @@ public class LoginPage extends BaseUI {
             waitAndSendKeys(loginInput, "testuser1@vaultbank.test");
             waitAndSendKeys(passwordInput, "Test1Pass!");
             waitAndClick(signInButton);
+    }
+
+    public void logOut() {
+        explicitWait(5).until(ExpectedConditions.visibilityOf(signOutButton));
+        jsClick(signOutButton);
     }
 }
 
